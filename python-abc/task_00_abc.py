@@ -1,45 +1,29 @@
 #!/usr/bin/python3
-"""Module for Shape classes."""
+"""Module that defines an abstract Animal class."""
 
 from abc import ABC, abstractmethod
-import math
 
 
-class Shape(ABC):
-    """Abstract base class for shapes."""
-
-    @abstractmethod
-    def area(self):
-        pass
+class Animal(ABC):
+    """Abstract base class for animals."""
 
     @abstractmethod
-    def perimeter(self):
+    def sound(self):
+        """Return the sound made by the animal."""
         pass
 
 
-class Circle(Shape):
-    def __init__(self, radius):
-        self.radius = radius
+class Dog(Animal):
+    """Dog class."""
 
-    def area(self):
-        return math.pi * self.radius ** 2
-
-    def perimeter(self):
-        return 2 * math.pi * self.radius
+    def sound(self):
+        """Return the dog's sound."""
+        return "Bark"
 
 
-class Rectangle(Shape):
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
+class Cat(Animal):
+    """Cat class."""
 
-    def area(self):
-        return self.width * self.height
-
-    def perimeter(self):
-        return 2 * (self.width + self.height)
-
-
-def shape_info(shape):
-    print(f"Area: {shape.area()}")
-    print(f"Perimeter: {shape.perimeter()}")
+    def sound(self):
+        """Return the cat's sound."""
+        return "Meow"
