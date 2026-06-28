@@ -1,58 +1,51 @@
-#!/usr/bin/python3
-"""Module that defines Shape, Circle, Rectangle and shape_info."""
-
+#!/usr/bin/env python3
 from abc import ABC, abstractmethod
 import math
 
-
 class Shape(ABC):
-    """Abstract base class for shapes."""
-
+    """Abstract Base Class representing a generic shape."""
+    
     @abstractmethod
-    def area(self):
-        """Return the area of the shape."""
+    def area(self) -> float:
         pass
-
+    
     @abstractmethod
-    def perimeter(self):
-        """Return the perimeter of the shape."""
+    def perimeter(self) -> float:
         pass
 
 
 class Circle(Shape):
-    """Circle class."""
-
-    def __init__(self, radius):
-        """Initialize a circle."""
+    """Concrete implementation of a Circle."""
+    
+    def __init__(self, radius: float):
         self.radius = radius
-
-    def area(self):
-        """Return the area of the circle."""
+        
+    def area(self) -> float:
         return math.pi * (self.radius ** 2)
-
-    def perimeter(self):
-        """Return the perimeter of the circle."""
+        
+    def perimeter(self) -> float:
         return 2 * math.pi * self.radius
 
 
 class Rectangle(Shape):
-    """Rectangle class."""
-
-    def __init__(self, width, height):
-        """Initialize a rectangle."""
+    """Concrete implementation of a Rectangle."""
+    
+    def __init__(self, width: float, height: float):
         self.width = width
         self.height = height
-
-    def area(self):
-        """Return the area of the rectangle."""
+        
+    def area(self) -> float:
         return self.width * self.height
-
-    def perimeter(self):
-        """Return the perimeter of the rectangle."""
+        
+    def perimeter(self) -> float:
         return 2 * (self.width + self.height)
 
 
-def shape_info(shape):
-    """Print the area and perimeter of a shape."""
+def shape_info(shape) -> None:
+    """
+    Prints the area and perimeter of a shape.
+    Relies on duck typing: as long as the object has area() and perimeter() 
+    methods, it will function correctly regardless of explicit type checking.
+    """
     print(f"Area: {shape.area()}")
     print(f"Perimeter: {shape.perimeter()}")
